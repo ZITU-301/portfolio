@@ -1,0 +1,237 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Personal portfolio and biodata website"
+    >
+
+    <title>
+        {% block title %}
+        My Portfolio
+        {% endblock %}
+    </title>
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- Tailwind -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <script>
+
+        tailwind.config = {
+
+            darkMode: "class",
+
+            theme: {
+
+                extend: {
+
+                    fontFamily: {
+
+                        sans: ["Inter", "sans-serif"],
+
+                    },
+
+                    colors: {
+
+                        primary: "#6366f1",
+
+                    },
+
+                },
+
+            },
+
+        };
+
+    </script>
+
+
+    <!-- Custom CSS -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/style.css' %}"
+    >
+
+</head>
+
+
+<body
+    class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300"
+>
+
+
+<!-- NAVBAR -->
+
+<header
+    id="navbar"
+    class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800"
+>
+
+    <nav
+        class="max-w-7xl mx-auto px-5 lg:px-8"
+    >
+
+        <div
+            class="flex items-center justify-between h-20"
+        >
+
+            <a
+                href="{% url 'portfolio:home' %}"
+                class="text-2xl font-extrabold tracking-tight"
+            >
+
+                Z<span class="text-indigo-500">.</span>
+
+            </a>
+
+
+            <!-- Desktop -->
+
+            <div
+                class="hidden md:flex items-center gap-8"
+            >
+
+                <a href="#home" class="nav-link">Home</a>
+
+                <a href="#about" class="nav-link">About</a>
+
+                <a href="#skills" class="nav-link">Skills</a>
+
+                <a href="#projects" class="nav-link">Projects</a>
+
+                <a href="#education" class="nav-link">Education</a>
+
+                <a href="#contact" class="nav-link">Contact</a>
+
+
+                <button
+                    id="themeToggle"
+                    type="button"
+                    class="theme-button"
+                    aria-label="Toggle dark mode"
+                >
+                    🌙
+                </button>
+
+            </div>
+
+
+            <!-- Mobile button -->
+
+            <button
+                id="mobileMenuButton"
+                class="md:hidden text-2xl"
+                type="button"
+            >
+
+                ☰
+
+            </button>
+
+        </div>
+
+
+        <!-- Mobile menu -->
+
+        <div
+            id="mobileMenu"
+            class="hidden md:hidden pb-5"
+        >
+
+            <div class="flex flex-col gap-4">
+
+                <a href="#home" class="nav-link">Home</a>
+
+                <a href="#about" class="nav-link">About</a>
+
+                <a href="#skills" class="nav-link">Skills</a>
+
+                <a href="#projects" class="nav-link">Projects</a>
+
+                <a href="#education" class="nav-link">Education</a>
+
+                <a href="#contact" class="nav-link">Contact</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    {% block content %}
+
+    {% endblock %}
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer
+    class="border-t border-slate-200 dark:border-slate-800 py-10"
+>
+
+    <div
+        class="max-w-7xl mx-auto px-5 lg:px-8 flex flex-col md:flex-row justify-between gap-5"
+    >
+
+        <p class="text-slate-500">
+
+            © {% now "Y" %} My Portfolio.
+            All rights reserved.
+
+        </p>
+
+
+        <p class="text-slate-500">
+
+            Built with Django.
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

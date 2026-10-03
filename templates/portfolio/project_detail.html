@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+{{ project.title }} | Project
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="pt-36 pb-24">
+
+    <div
+        class="max-w-5xl mx-auto px-5 lg:px-8"
+    >
+
+        <a
+            href="{% url 'portfolio:home' %}#projects"
+            class="text-indigo-500 font-semibold"
+        >
+
+            ← Back to projects
+
+        </a>
+
+
+        <h1
+            class="text-4xl md:text-6xl font-extrabold mt-8"
+        >
+
+            {{ project.title }}
+
+        </h1>
+
+
+        <p
+            class="text-xl text-slate-500 dark:text-slate-400 mt-5"
+        >
+
+            {{ project.short_description }}
+
+        </p>
+
+
+        {% if project.image %}
+
+        <img
+            src="{{ project.image.url }}"
+            alt="{{ project.title }}"
+            class="w-full max-h-[600px] object-cover rounded-3xl mt-10 shadow-xl"
+        >
+
+        {% endif %}
+
+
+        <div
+            class="flex flex-wrap gap-2 mt-8"
+        >
+
+            {% for tech in project.technology_list %}
+
+            <span class="tech-tag">
+                {{ tech }}
+            </span>
+
+            {% endfor %}
+
+        </div>
+
+
+        <div
+            class="prose dark:prose-invert max-w-none mt-10"
+        >
+
+            {{ project.description|linebreaks }}
+
+        </div>
+
+
+        <div
+            class="flex gap-4 mt-10"
+        >
+
+            {% if project.github_url %}
+
+            <a
+                href="{{ project.github_url }}"
+                target="_blank"
+                class="btn-secondary"
+            >
+
+                GitHub
+
+            </a>
+
+            {% endif %}
+
+
+            {% if project.live_url %}
+
+            <a
+                href="{{ project.live_url }}"
+                target="_blank"
+                class="btn-primary"
+            >
+
+                Live Demo
+
+            </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
